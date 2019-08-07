@@ -7,8 +7,8 @@ public class DadosException extends Exception{
         super(message);
     }
 
-    public DadosException(Throwable cause) {
-        super(cause);
+    public DadosException(String message, Throwable cause) {
+        super(message, cause);
     }
         
 }
