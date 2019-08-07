@@ -33,7 +33,7 @@ public class AlunoBO implements BO<Aluno> {
 
     @Override
     public void alterar(Aluno entidade) throws NegocioException {
-        consultar(entidade.getId());
+        consultar(entidade);
         validar(entidade);
         AlunoDAO dao = new AlunoDAO();
 
@@ -46,7 +46,7 @@ public class AlunoBO implements BO<Aluno> {
 
     @Override
     public void excluir(Aluno entidade) throws NegocioException {
-        consultar(entidade.getId());
+        consultar(entidade);
         AlunoDAO dao = new AlunoDAO();
 
         try {
@@ -57,12 +57,12 @@ public class AlunoBO implements BO<Aluno> {
     }
 
     @Override
-    public Aluno consultar(int id) throws NegocioException {
+    public Aluno consultar(Aluno entidade) throws NegocioException {
         Aluno aluno = new Aluno();
         AlunoDAO dao = new AlunoDAO();
 
         try {
-            aluno = dao.consultar(aluno.getId());
+            aluno = dao.consultar(entidade.getId());
             if (aluno.getId() == 0) {
                 throw new NegocioException("Aluno não encontrado!");
             }
